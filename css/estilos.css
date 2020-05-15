@@ -105,12 +105,25 @@ Body {
     line-height: 1.8em;
   }
 
+  
+  .sobre,
   .contato,
   .portfolio {
     padding: 2em;
-    min-height: 100vh ;
+    min-height: 100vh;
+    
   }
-  .contato,
+
+  @media (min-width:1200px) {
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .sobre h2,
+  .contato h2,
   .portfolio h2 {
     font-family: 'Press Start 2P', cursive;
     color: whitesmoke;
@@ -119,23 +132,48 @@ Body {
     text-align: center;
   }
 
+  .sobre p {
+    color: white;
+    margin-bottom: 1.4em;
+    text-indent: 3em;
+    text-align: justify;
+
+  }
+
+  .sobre a {
+    color: cyan;
+  }
+
+  .sobre a:hover {
+    background-color: green;
+  }
+
+  .sobre .avatar {
+    float: left;
+    margin-right: 2em;
+  }
+  .sobre .avatar img {
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  }
+
   .portfolio .grid{
     display: grid;
     gap: 2em;
     color: whitesmoke;
-    height: center;
+    grid-template-columns: 240px;
+     justify-content: center;
   }
   
    @media (min-width: 560px) {
-     .portfolio .grid{
+     .portfolio .grid {
        height: center;
-      justify-content: center;
+       justify-content: center;
        grid-template-columns: 240px 240px;
      }
    }
    @media (min-width: 912px) {
     .portfolio .grid{
-      grid-template-columns: repeat(3, 260px);
+      grid-template-columns: repeat(3, 240px);
       align-content: center;
       justify-content: center;
     }
@@ -153,10 +191,40 @@ Body {
     border-radius: 20px;
     transition: transform 0.1s;
   }
-  .img-portfolio:hover {
-    
-    transform: scale(1.5) rotate(360deg);
+ 
+  .flip-card {
+    perspective: 500px;
+    height: 240px;
   }
+
+  .card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+
+  .flip-card:hover .card {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, 
+  .card-back {
+    backface-visibility: hidden;
+    left: 0;
+    position: absolute;
+    top: 0;
+    border-radius: 20px;
+    height: 180px;
+    width: 240px;
+
+
+  }
+
+  .card-back {
+    background-color: indigo;
+    transform: rotateY(180deg);
+  }
+
   .contato .icons {
     text-align: center;
   }
@@ -171,5 +239,3 @@ Body {
     text-decoration: none;
     text-shadow: 0px 0px 10px rgba(0, 253, 13, 0.5);
   }
-
-  
